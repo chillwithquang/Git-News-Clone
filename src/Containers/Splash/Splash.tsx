@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'native-base';
 
-const HomeContainer = () => {
+const SplashContainer = () => {
   return (
     <View>
-      <Text> home container</Text>
+      <Text> splash container</Text>
     </View>
   );
 };
 
-export default HomeContainer;
+export default SplashContainer;

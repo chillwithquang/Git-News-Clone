@@ -1,22 +1,44 @@
 import React from 'react';
-// import { View, Text } from 'react-native';
+import { NativeBaseProvider } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-// import { navigationRef } from 'Navigators/Root';
 import { AppearanceProvider } from 'react-native-appearance';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import HomeContainer from '@/Containers/Home';
+import theme from '@/themes';
+import SplashContainer from '@/Containers/Splash';
+import TabNavigator from './TabNavigator';
+import { navigationRef } from './RootContainer';
 
-const Stack = createStackNavigator();
+import {
+  MainNavigatorParamsList,
+  ApplicationNavigatorParamsList,
+} from '@/types';
 
-const ApplicationNavigator = () => {
+const MainStack = createStackNavigator<MainNavigatorParamsList>();
+const ApplicationStack = createStackNavigator<ApplicationNavigatorParamsList>();
+
+const MainNavigator: React.FC = () => {
+  const { Navigator, Screen } = MainStack;
+  return (
+    <Navigator screenOptions={{ headerShown: false }}>
+      <Screen name="Tabs" component={TabNavigator} />
+      <Screen name="Splash" component={SplashContainer} />
+    </Navigator>
+  );
+};
+
+const ApplicationNavigator: React.FC = () => {
+  const { Navigator, Screen } = ApplicationStack;
+
   return (
     <AppearanceProvider>
       <SafeAreaView style={{ flex: 1 }} edges={['right', 'top', 'left']}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeContainer} />
-          </Stack.Navigator>
+        <NavigationContainer ref={navigationRef}>
+          <NativeBaseProvider theme={theme}>
+            <Navigator screenOptions={{ headerShown: false }}>
+              <Screen name="Main" component={MainNavigator} />
+            </Navigator>
+          </NativeBaseProvider>
         </NavigationContainer>
       </SafeAreaView>
     </AppearanceProvider>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'native-base';
 
-const HomeContainer = () => {
+const AboutContainer = () => {
   return (
     <View>
-      <Text> home container</Text>
+      <Text> about container</Text>
     </View>
   );
 };
 
-export default HomeContainer;
+export default AboutContainer;
