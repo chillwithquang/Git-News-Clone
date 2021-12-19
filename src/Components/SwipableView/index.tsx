@@ -31,10 +31,12 @@ const SwipeView = (props: Props) => {
   const { children, backView, onSwipeLeft, simultaneousHandlers } = props;
 
   const translateX = useSharedValue(0);
+  const pressed = useSharedValue(false);
 
   const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
     onActive: event => {
       translateX.value = Math.max(-256, Math.min(0, event.translationX));
+      pressed.value = true;
     },
     onEnd: () => {
       const shouldBeDismissed = translateX.value < SWIPE_THRESHOLD;
@@ -44,6 +46,7 @@ const SwipeView = (props: Props) => {
       } else {
         translateX.value = withTiming(0);
       }
+      pressed.value = false;
     },
   });
 
@@ -51,6 +54,9 @@ const SwipeView = (props: Props) => {
     transform: [
       {
         translateX: translateX.value,
+      },
+      {
+        scale: pressed.value ? 1.02 : 1,
       },
     ],
   }));

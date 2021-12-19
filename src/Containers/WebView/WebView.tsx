@@ -1,11 +1,32 @@
-import React from 'react';
-import { View, Text } from 'native-base';
+import React, { useRef } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { WebViewProps } from '@/types';
+import { WebView } from 'react-native-webview';
+import { makeStyledComponent } from '@/Utils/styled';
 
-const WebViewContainer = () => {
+const StyledSafeAreaView = makeStyledComponent(SafeAreaView);
+
+const WebViewContainer = (props: WebViewProps) => {
+  const { route } = props;
+
+  const webViewRef = useRef();
+  const { uri } = route.params;
+
   return (
-    <View>
-      <Text> web preview container</Text>
-    </View>
+    <StyledSafeAreaView
+      bgColor="transparent"
+      flex="1"
+      edges={['right', 'top', 'left']}
+    >
+      <WebView
+        ref={webViewRef}
+        source={{ uri }}
+        originWhitelist={['*']}
+        startInLoadingState={true}
+        cacheEnabled={true}
+        allowUniversalAccessFromFileURLs={true}
+      />
+    </StyledSafeAreaView>
   );
 };
 

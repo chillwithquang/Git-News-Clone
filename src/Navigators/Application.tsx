@@ -8,6 +8,7 @@ import theme from '@/themes';
 import SplashContainer from '@/Containers/Splash';
 import TabNavigator from './TabNavigator';
 import { navigationRef } from './RootContainer';
+import WebViewContainer from '@/Containers/WebView';
 
 import {
   MainNavigatorParamsList,
@@ -37,6 +38,7 @@ const ApplicationNavigator: React.FC = () => {
           <NativeBaseProvider theme={theme}>
             <Navigator screenOptions={{ headerShown: false }}>
               <Screen name="Main" component={MainNavigator} />
+              <Screen name="WebView" component={WebViewContainer} />
             </Navigator>
           </NativeBaseProvider>
         </NavigationContainer>

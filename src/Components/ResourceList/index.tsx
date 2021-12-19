@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, View } from 'moti';
 import {
@@ -10,6 +11,7 @@ import { RootState } from '@/Store';
 import { deleteResourceItem } from '@/Store/Resource';
 import { makeStyledComponent } from '@/Utils/styled';
 import ResourceItem, { ResourceItemType } from '@/Components/ResourceItem';
+import { HomeNavigatorParamsList } from '@/types';
 
 const StyledView = makeStyledComponent(View);
 const StyledScrollView = makeStyledComponent(ScrollView);
@@ -53,17 +55,20 @@ const AnimatedResourceItem = (props: ResourceItemProps) => {
   );
 };
 
-const ResourceList = (props: ResourceListProps) => {
+const ResourceList = () => {
   const { sourceData } = useSelector((state: RootState) => state.resource);
 
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<StackNavigationProp<HomeNavigatorParamsList>>();
   const dispatch = useDispatch();
 
   const refScrollView = useRef(null);
 
   const handlePressItem = (item: ResourceItemType) => {
     // TODO
-    return navigation.navigate('About');
+    return navigation.navigate('WebView', {
+      uri: item.original_url,
+    });
   };
 
   const handleRemoveItem = (item: ResourceItemType) => {
