@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const CommonSlice = createSlice({
+export const commonSlice = createSlice({
   name: 'common',
   initialState: {
     colorMode: 'light',
@@ -15,6 +15,6 @@ export const CommonSlice = createSlice({
   },
 });
 
-export const { setThemeLight, setThemeDark } = CommonSlice.actions;
+export const { setThemeLight, setThemeDark } = commonSlice.actions;
 
-export default CommonSlice.reducer;
+export default commonSlice.reducer;

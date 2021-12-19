@@ -13,11 +13,11 @@ import {
 export const navigationRef: React.RefObject<NavigationContainerRef<{}>> =
   React.createRef();
 
-export function navigate(name: string, params: {}) {
+export function navigate(name: string = '', params: {}) {
   navigationRef.current?.navigate(name, params);
 }
 
-export function navigateAndReset(routes = [], index = 0) {
+export function navigateAndReset(routes = [], index: number = 0) {
   navigationRef.current?.dispatch(
     CommonActions.reset({
       index,
@@ -26,7 +26,7 @@ export function navigateAndReset(routes = [], index = 0) {
   );
 }
 
-export function navigateAndSimpleReset(name, index = 0) {
+export function navigateAndSimpleReset(name: string = '', index = 0) {
   navigationRef.current?.dispatch(
     CommonActions.reset({
       index,
