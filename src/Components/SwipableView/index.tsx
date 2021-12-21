@@ -35,7 +35,7 @@ const SwipeView = (props: Props) => {
 
   const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
     onActive: event => {
-      translateX.value = Math.max(-256, Math.min(0, event.translationX));
+      translateX.value = Math.max(-128, Math.min(0, event.translationX));
       pressed.value = true;
     },
     onEnd: () => {

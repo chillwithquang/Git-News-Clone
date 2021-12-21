@@ -24,7 +24,7 @@ const TabContainer: React.FunctionComponent<TabContainerProps> = ({
         flex={1}
         space={2}
         borderTopWidth={2}
-        borderTopColor="lightBlue.500"
+        borderTopColor="dark.700"
       >
         <Box mt={1} alignItems="center">
           {children}
@@ -38,7 +38,7 @@ const TabContainer: React.FunctionComponent<TabContainerProps> = ({
         <Box alignItems="center" mt={2}>
           {children}
         </Box>
-        <Text fontSize="md" color="teal.900" mt={-2}>
+        <Text fontSize="md" color="dark.300" mt={-2}>
           {label}
         </Text>
       </VStack>
@@ -57,7 +57,7 @@ const TabNavigator = () => {
       tabBarShowLabel: false,
       tabBarStyle: {
         height: 80,
-        backgroundColor: colors.lightBlue['600'],
+        backgroundColor: colors.dark['50'],
         borderTopColor: 'rgba(0, 0, 0, 0)',
       },
       tabBarIcon: ({ focused }) => {
@@ -81,7 +81,7 @@ const TabNavigator = () => {
           <TabContainer label={label} focused={focused}>
             <Icon
               name={iconName}
-              color={focused ? colors.lightBlue['50'] : colors.darkBlue['800']}
+              color={focused ? colors.lightBlue['50'] : colors.dark['300']}
             />
           </TabContainer>
         );

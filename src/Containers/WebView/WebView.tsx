@@ -22,7 +22,7 @@ const WebViewContainer = (props: WebViewProps) => {
         ref={webViewRef}
         source={{ uri }}
         originWhitelist={['*']}
-        startInLoadingState={true}
+        startInLoadingState={false}
         cacheEnabled={true}
         allowUniversalAccessFromFileURLs={true}
       />
@@ -30,4 +30,4 @@ const WebViewContainer = (props: WebViewProps) => {
   );
 };
 
-export default WebViewContainer;
+export default React.memo(WebViewContainer);

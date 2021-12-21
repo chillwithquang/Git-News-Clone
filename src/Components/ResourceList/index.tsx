@@ -12,6 +12,7 @@ import { deleteResourceItem } from '@/Store/Resource';
 import { makeStyledComponent } from '@/Utils/styled';
 import ResourceItem, { ResourceItemType } from '@/Components/ResourceItem';
 import { HomeNavigatorParamsList } from '@/types';
+import { useColorModeValue } from 'native-base';
 
 const StyledView = makeStyledComponent(View);
 const StyledScrollView = makeStyledComponent(ScrollView);
@@ -72,11 +73,17 @@ const ResourceList = () => {
   };
 
   const handleRemoveItem = (item: ResourceItemType) => {
-    console.log('remove item: ', item);
     dispatch(deleteResourceItem({ resourceItem: item }));
   };
   return (
-    <StyledScrollView ref={refScrollView} w="full" bg="warmGray.50">
+    <StyledScrollView
+      ref={refScrollView}
+      w="full"
+      flex={1}
+      borderTopLeftRadius="20px"
+      borderTopRightRadius="20px"
+      bg={useColorModeValue('warmGray.900', 'primary.50')}
+    >
       <AnimatePresence>
         {sourceData &&
           sourceData.map((item: ResourceItemType) => (

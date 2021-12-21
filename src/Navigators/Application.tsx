@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider, useColorModeValue } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppearanceProvider } from 'react-native-appearance';

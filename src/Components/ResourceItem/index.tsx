@@ -7,6 +7,7 @@ import {
   Divider,
   useTheme,
   Pressable,
+  useColorModeValue,
 } from 'native-base';
 import { PanGestureHandlerProps } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -52,35 +53,47 @@ const ResourceItem = (props: Props) => {
       }
     >
       <Pressable onPress={onPressItem}>
-        <Box w="full" px="2" py="1" bg="warmGray.50">
+        <Box
+          w="full"
+          px="2"
+          py="1"
+          bg={useColorModeValue('dark.50', 'primary.50')}
+        >
           {data && (
             <VStack w="full">
               <Box>
                 <HStack alignItems="center">
-                  <Icon name="empire" size={16} />
-                  <Text mx={2} color="blue.700">
-                    {data.owner}/{data.name}
+                  <Icon name="empire" size={16} color={colors.gray['400']} />
+                  <Text ml={2} color="darkBlue.500">
+                    {data.owner}
                   </Text>
+                  <Text color="darkBlue.400" bold>/{data.name}</Text>
                 </HStack>
               </Box>
-              <Text color="gray.600">{data.description}</Text>
+              <Text color="gray.300">{data.description}</Text>
               <Box>
                 <HStack alignItems="center">
                   <FooterItemInfo mr="4" language={data.programmingLanguage}>
-                    <Text mx={2}>{data.programmingLanguage}</Text>
+                    <Text mx={2} color="gray.500">
+                      {data.programmingLanguage}
+                    </Text>
                   </FooterItemInfo>
                   <FooterItemInfo
                     mr="4"
                     nameIcon="star"
                     colorIcon={colors.gray['500']}
                   >
-                    <Text mx={2}>{data.stars} stars</Text>
+                    <Text mx={2} color="gray.500">
+                      {data.stars} stars
+                    </Text>
                   </FooterItemInfo>
                   <FooterItemInfo
                     nameIcon="code-branch"
                     colorIcon={colors.gray['500']}
                   >
-                    <Text mx={2}>{data.forks} forks</Text>
+                    <Text mx={2} color="gray.500">
+                      {data.forks} forks
+                    </Text>
                   </FooterItemInfo>
                 </HStack>
               </Box>
