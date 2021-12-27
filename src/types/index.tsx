@@ -2,8 +2,8 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export type MainNavigatorParamsList = {
-  Splash: undefined;
-  Tabs: undefined;
+  Drawer: undefined;
+  WebView: { uri: string } | undefined;
 };
 
 export type TabNavigatorParamsList = {
@@ -11,17 +11,12 @@ export type TabNavigatorParamsList = {
   About: undefined;
 };
 
-export type HomeNavigatorParamsList = {
-  HomeView: undefined;
-  WebView: { uri: string } | undefined;
+export type DrawerNavigatorParamsList = {
+  Tabs: undefined;
 };
 
 export type ApplicationNavigatorParamsList = {
   Main: NavigatorScreenParams<MainNavigatorParamsList>;
-  WebView: { uri: string } | undefined;
 };
 
-export type WebViewProps = StackScreenProps<
-  ApplicationNavigatorParamsList,
-  'WebView'
->;
+export type WebViewProps = StackScreenProps<MainNavigatorParamsList, 'WebView'>;

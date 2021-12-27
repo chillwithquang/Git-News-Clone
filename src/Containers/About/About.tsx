@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import AnimatedColorBox from '@/Components/AnimatedColorBox';
 import MastHead from '@/Components/MastHead';
 import LinkButton from '@/Components/LinkButton';
+import Navbar from '@/Components/Navbar';
 
 const AboutContainer = () => {
   return (
@@ -15,7 +16,9 @@ const AboutContainer = () => {
       <MastHead
         title="About this app"
         image={require('../../Assets/mario.jpg')}
-      />
+      >
+        <Navbar />
+      </MastHead>
       <ScrollView
         borderTopLeftRadius="20px"
         borderTopRightRadius="20px"

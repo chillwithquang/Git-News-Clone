@@ -11,7 +11,7 @@ import { RootState } from '@/Store';
 import { deleteResourceItem } from '@/Store/Resource';
 import { makeStyledComponent } from '@/Utils/styled';
 import ResourceItem, { ResourceItemType } from '@/Components/ResourceItem';
-import { HomeNavigatorParamsList } from '@/types';
+import { MainNavigatorParamsList } from '@/types';
 import { useColorModeValue } from 'native-base';
 
 const StyledView = makeStyledComponent(View);
@@ -60,7 +60,7 @@ const ResourceList = () => {
   const { sourceData } = useSelector((state: RootState) => state.resource);
 
   const navigation =
-    useNavigation<StackNavigationProp<HomeNavigatorParamsList>>();
+    useNavigation<StackNavigationProp<MainNavigatorParamsList>>();
   const dispatch = useDispatch();
 
   const refScrollView = useRef(null);

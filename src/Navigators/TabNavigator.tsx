@@ -20,12 +20,7 @@ const TabContainer: React.FunctionComponent<TabContainerProps> = ({
 }) => (
   <>
     {focused ? (
-      <VStack
-        flex={1}
-        space={2}
-        borderTopWidth={2}
-        borderTopColor="dark.700"
-      >
+      <VStack flex={1} space={2} borderTopWidth={2} borderTopColor="dark.700">
         <Box mt={1} alignItems="center">
           {children}
         </Box>

@@ -67,7 +67,9 @@ const ResourceItem = (props: Props) => {
                   <Text ml={2} color="darkBlue.500">
                     {data.owner}
                   </Text>
-                  <Text color="darkBlue.400" bold>/{data.name}</Text>
+                  <Text color="darkBlue.400" bold>
+                    /{data.name}
+                  </Text>
                 </HStack>
               </Box>
               <Text color="gray.300">{data.description}</Text>

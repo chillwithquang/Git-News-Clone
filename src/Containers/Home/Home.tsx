@@ -4,7 +4,7 @@ import { VStack, Divider, useColorModeValue } from 'native-base';
 import __get from 'lodash/get';
 import { RootState } from '@/Store';
 import { fetchResource } from '@/Store/Resource';
-import Header from '@/Components/Header';
+import Navbar from '@/Components/Navbar';
 import { ResourceService } from '@/Services/Resource';
 import { showMessageError } from '@/Utils';
 import ResourceList from '@/Components/ResourceList';
@@ -39,7 +39,9 @@ const HomeContainer = () => {
       <MastHead
         title="Github"
         image={require('../../Assets/github-social.png')}
-      />
+      >
+        <Navbar />
+      </MastHead>
       <VStack
         flex={1}
         bg={useColorModeValue('warmGray.900', 'darkBlue.900')}

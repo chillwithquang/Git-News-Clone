@@ -9,11 +9,19 @@ import {
   CommonActions,
   NavigationContainerRef,
 } from '@react-navigation/native';
+import {
+  ApplicationNavigatorParamsList,
+  MainNavigatorParamsList,
+} from '@/types';
 
-export const navigationRef: React.RefObject<NavigationContainerRef<{}>> =
-  React.createRef();
+export const navigationRef: React.RefObject<
+  NavigationContainerRef<MainNavigatorParamsList>
+> = React.createRef();
 
-export function navigate(name: string = '', params: {}) {
+export function navigate<RouteName extends keyof MainNavigatorParamsList>(
+  name: RouteName,
+  params: MainNavigatorParamsList[RouteName],
+) {
   navigationRef.current?.navigate(name, params);
 }
 
