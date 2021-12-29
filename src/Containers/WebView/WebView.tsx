@@ -9,7 +9,7 @@ const StyledSafeAreaView = makeStyledComponent(SafeAreaView);
 const WebViewContainer = (props: WebViewProps) => {
   const { route } = props;
 
-  const webViewRef = useRef();
+  const webViewRef = useRef(null);
   const { uri } = route.params;
 
   return (
@@ -25,6 +25,11 @@ const WebViewContainer = (props: WebViewProps) => {
         startInLoadingState={false}
         cacheEnabled={true}
         allowUniversalAccessFromFileURLs={true}
+        onNavigationStateChange={navState => {
+          if (navState.canGoBack) {
+            webViewRef.current.goBack();
+          }
+        }}
       />
     </StyledSafeAreaView>
   );

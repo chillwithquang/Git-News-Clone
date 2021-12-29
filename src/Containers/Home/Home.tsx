@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { VStack, Divider, useColorModeValue } from 'native-base';
 import __get from 'lodash/get';
 import { RootState } from '@/Store';
+import { saveUser, UserInfoType } from '@/Store/User';
 import { fetchResource } from '@/Store/Resource';
 import Navbar from '@/Components/Navbar';
 import { ResourceService } from '@/Services/Resource';
@@ -10,10 +11,22 @@ import { showMessageError } from '@/Utils';
 import ResourceList from '@/Components/ResourceList';
 import AnimatedColorBox from '@/Components/AnimatedColorBox';
 import MastHead from '@/Components/MastHead';
+import LocalStorage, { StorageKey } from '@/LocalStorage';
 
 const HomeContainer = () => {
   const dispatch = useDispatch();
+
   const { language, since } = useSelector((state: RootState) => state.resource);
+
+  useEffect(() => {
+    async function fetchUserInfo() {
+      const userData = await LocalStorage.getItem(StorageKey.USER_INFO);
+      const userLogin = JSON.parse(userData);
+      dispatch(saveUser({ ...userLogin }));
+    }
+
+    fetchUserInfo();
+  }, [dispatch]);
 
   const getListSource = useCallback(async () => {
     try {

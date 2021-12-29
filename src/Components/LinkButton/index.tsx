@@ -22,4 +22,4 @@ const LinkButton = ({ href, ...props }: Props) => {
   return <Button {...props} onPress={handlePress} />;
 };
 
-export default LinkButton;
+export default React.memo(LinkButton);

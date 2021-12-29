@@ -3,6 +3,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const StorageKey = {
   GITHUB: 'GITHUB',
   USER: 'USER',
+  SOCIAL_TOKEN: 'SOCIAL_TOKEN',
+  USER_INFO: 'USER_INFO',
 };
 
 export default class MyLocalStorage {
@@ -15,5 +17,13 @@ export default class MyLocalStorage {
       value = JSON.stringify(value);
     }
     return AsyncStorage.setItem(key, value);
+  }
+
+  static async removeStorage(key: string) {
+    return AsyncStorage.removeItem(key);
+  }
+
+  static async clearStorage() {
+    return AsyncStorage.clear();
   }
 }

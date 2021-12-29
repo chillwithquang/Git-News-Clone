@@ -3,8 +3,8 @@ import { Button, IButtonProps, Icon } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 interface Props extends IButtonProps {
-  active: boolean;
-  icon: string;
+  active?: boolean;
+  icon?: string;
   children: React.ReactNode;
 }
 const MenuButton = ({ active, icon, children, ...props }: Props) => {
@@ -32,7 +32,7 @@ const MenuButton = ({ active, icon, children, ...props }: Props) => {
       bg={active ? undefined : 'transparent'}
       variant="solid"
       justifyContent="flex-start"
-      leftIcon={<Icon as={FontAwesome5} name={icon} size="sm" opacity="0.5" />}
+      leftIcon={<Icon as={FontAwesome5} name={icon} size="sm" opacity="1" />}
       {...props}
     >
       {children}
@@ -40,4 +40,4 @@ const MenuButton = ({ active, icon, children, ...props }: Props) => {
   );
 };
 
-export default MenuButton;
+export default React.memo(MenuButton);
