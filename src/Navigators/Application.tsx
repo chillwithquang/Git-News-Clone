@@ -18,6 +18,7 @@ const MainNavigator = () => {
 
   return (
     <Navigator screenOptions={{ headerShown: false }}>
+      <Screen name="Splash" component={SplashContainer} />
       <Screen name="Drawer" component={DrawerNavigator} />
       <Screen name="WebView" component={WebViewContainer} />
     </Navigator>

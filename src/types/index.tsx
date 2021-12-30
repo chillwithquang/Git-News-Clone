@@ -2,6 +2,7 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export type MainNavigatorParamsList = {
+  Splash: undefined;
   Drawer: undefined;
   WebView: { uri: string } | undefined;
 };

@@ -57,7 +57,9 @@ const AnimatedResourceItem = (props: ResourceItemProps) => {
 };
 
 const ResourceList = () => {
-  const sourceData = useSelector<RootState>(state => state.resource.sourceData);
+  const sourceData: ResourceItemType[] = useSelector<RootState>(
+    state => state.resource.sourceData,
+  ) as ResourceItemType[];
 
   const navigation =
     useNavigation<StackNavigationProp<MainNavigatorParamsList>>();
